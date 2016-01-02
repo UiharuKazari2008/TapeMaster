@@ -1,0 +1,44 @@
+# TapeMaster Install Location
+APPHOME="/opt/tapemaster"
+# Transfer Drive Device and mount point
+TDDN="/dev/disk/by-label/TM_TRACK"
+TDMP="/media/TM_XFERDISK"
+# Highspeed audio file storage location
+# Why? It is highly suggested to NOT read directly off a USB drive
+# this can cause short delays when tracks load and can mess up timeing
+LBF="$APPHOME/storage"
+# Where to store temp playlist that is used
+playlist="$APPHOME/masterlist.txt"
+
+# TrackID silence gap time, In your recorders manual it should say how long
+# it must be silent to trigger the auto StartID to be written (normaly 3 Sec
+# so like my Panasonic SV-4100 only need 2 Sec, CHECK!!!)
+# If you are using SIRCS dont worry about this
+TGS=3
+# Tape header, In the case of DAT it is required to have 2 min of silence to have room
+# for the tape to streach over time and to protect the first track. Failure to do this
+# will result in currupted audio between the 00:00:00 to 00:02:00 ABS time.
+# For MiniDisc you can set this to 0s becuase this does not apply
+TPG=2m
+
+# Soundcheck track location / settings (If you are doing manual levels aka Analog)
+TTF="$HOME/noise.mp3"
+TTO=""
+
+# LED control / LCD scripts for status lights (if you have them)
+## Green H/L (Done/Idle)
+GreenHigh="/opt/GPIOctrl/gh.py"
+GreenLow="/opt/GPIOctrl/gl.py"
+## Yellow H/L (Info/Alarm/Check Console)
+YellowHigh="/opt/GPIOctrl/lh.py"
+YellowLow="/opt/GPIOctrl/ll.py"
+## Red H/L (Rec/Busy)
+RedHigh="/opt/GPIOctrl/rh.py"
+RedLow="/opt/GPIOctrl/rl.py"
+## Setup (Setup GPIO Pins and what ever else)
+StatInit="/opt/GPIOctrl/init.py"
+
+# Direct Contorl Settings
+## Device Name
+## Needs to be setup but your remote should be called "tape"
+REMNAME="tape"
